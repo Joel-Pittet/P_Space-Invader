@@ -1,4 +1,10 @@
-﻿using System;
+﻿///Auteur: Joël Pittet
+///Date: 25.01.2024
+///Lieu: Lausanne - ETML
+///Description: Programme qui permet de jouer au jeu Space Invader
+///
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +17,20 @@ namespace P_Space_Invader
         static void Main(string[] args)
         {
 
-
+            //Affiche le menu
             DrawMenu();
 
+            //Récupère le choix de l'utilisateur
             char returnedOption = SelectedOption();
 
+            //Passe le choix de l'utilisateur en paramètre pour lancer la méthode correspondante
             OptionToLaunch(returnedOption);
 
-            //Méthode qui affiche le menu
+
+            //Méthodes
+
+
+            //Affiche le menu
             void DrawMenu()
             {
 
@@ -48,7 +60,7 @@ namespace P_Space_Invader
 
             }
 
-            //Récupère le choix de l'utilisateur
+            
             char SelectedOption()
             {
                 Console.WriteLine("Veuillez entrer la lettre qui correspond à votre choix");
@@ -58,28 +70,37 @@ namespace P_Space_Invader
                 return letterPressed;
             }
 
-            //Lance l'option selectionnée
+            //Lance l'option choisie par l'utilisateur
             void OptionToLaunch(char userChoice)
             {
                 switch (userChoice)
                 {
+                    //Lance le jeu
                     case 'a':
                         PlayGame();
                         break;
+                    //Ouvre les options
                     case 'b':
                         OpenOptions();
                         break;
+                    //Affiche le tableau des scores
                     case 'c':
                         ShowHighScore();
                         break;
+                    //Affiche l'à propos
                     case 'd':
                         ShowAbout();
                         break;
+                    //Quitte le programme
                     case 'e':
                         ExitProgram();
                         break;
+                    //Si l'utilisateur entre une lettre pas existanrte dans le menu
+                    //Efface la comnsole et réaffiche le menu en lui redemandant une lettre
                     default:
                         Console.WriteLine("Veuillez entrer une lettre disponible");
+                        Console.Clear();
+                        DrawMenu();
                         SelectedOption();
                         break;
                 }
@@ -89,7 +110,9 @@ namespace P_Space_Invader
             //Démarre le jeu
             void PlayGame()
             {
-
+                Game game = new Game();
+                Console.Clear();
+                game.InitializeGame();
             }
 
 
