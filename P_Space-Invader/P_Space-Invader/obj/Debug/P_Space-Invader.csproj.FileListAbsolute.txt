@@ -1,0 +1,8 @@
+D:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\bin\Debug\P_Space-Invader.exe.config
+D:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\bin\Debug\P_Space-Invader.exe
+D:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\bin\Debug\P_Space-Invader.pdb
+D:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\obj\Debug\P_Space-Invader.csproj.AssemblyReference.cache
+D:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\obj\Debug\P_Space-Invader.csproj.SuggestedBindingRedirects.cache
+D:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\obj\Debug\P_Space-Invader.csproj.CoreCompileInputs.cache
+D:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\obj\Debug\P_Space-Invader.exe
+D:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\obj\Debug\P_Space-Invader.pdb
