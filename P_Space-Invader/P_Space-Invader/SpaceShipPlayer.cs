@@ -2,7 +2,7 @@
 ///Date: 25.01.2024
 ///Lieu: Lausanne - ETML
 ///Description: Classe qui contient plusieurs méthodes et 
-///             attributs qui permettent d'utiliser le vaisseau
+///             attributs qui permettent d'utiliser le vaisseau du joueur
 /// 
 
 using System;
@@ -24,28 +24,23 @@ namespace P_Space_Invader
         /// <summary>
         /// Position du curseur sur l'axe X
         /// </summary>
-        int _cursorOnX = 0;
+        int _cursorOnX;
 
         /// <summary>
         /// Position du curseur sur l'axe Y
         /// </summary>
-        int _cursorOnY = 0;
+        int _cursorOnY;
 
-
-        int _stockedCursorX = 0;
-        int _stockedCursorY = 0;
 
         /// <summary>
         /// Affiche le vaisseau
         /// </summary>
-        public void PlayerSpaceShipDraw(int cursorX, int cursorY)
+        public void PlayerSpaceShipDraw(int cursorOnX, int cursorOnY)
         {
-            //Récupère les valeurs pour la position
-            _cursorOnX = cursorX;
-            _cursorOnY = cursorY;
 
-            _stockedCursorX = _cursorOnX;
-            _stockedCursorY = _cursorOnY;
+            //Récupère la position du vaisseau
+            _cursorOnX = cursorOnX;
+            _cursorOnY = cursorOnY;
 
             //Position initiale du vaisseau
             Console.CursorLeft = _cursorOnX;
@@ -53,7 +48,6 @@ namespace P_Space_Invader
 
             //Affiche le vaisseau du vaisseau
             Console.WriteLine(_spaceShip);
-            Console.ReadLine();
         }
 
         void PlayerSpaceShipLife()
@@ -69,7 +63,7 @@ namespace P_Space_Invader
         public void PlayerSpaceShipMoving()
         {
             
-            if(Console.ReadKey().Key == ConsoleKey.LeftArrow)
+            /*if(Console.ReadKey().Key == ConsoleKey.LeftArrow)
             {
                 Console.Clear();
                 PlayerSpaceShipDraw(_stockedCursorX - 1, _cursorOnY);
@@ -79,7 +73,7 @@ namespace P_Space_Invader
             {
                 Console.Clear();
                 PlayerSpaceShipDraw(_stockedCursorX + 1, _cursorOnY);
-            }
+            }*/
 
 
 
