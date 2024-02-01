@@ -39,20 +39,11 @@ namespace P_Space_Invader
             //TODO: Dessiner les bunkers
             //TODO: Dessiner les aliens
 
-            const int NB_BUNKER = 3;
+            //Crée un bunker
+            Bunker bunker = new Bunker();
 
-            for (int i = 0; i < NB_BUNKER; i++)
-            {
-                //Crée un bunker
-                Bunker bunker = new Bunker();
-
-                //Position initiale du bunker
-                Console.CursorLeft = i * 20 + 20;
-                Console.CursorTop = 50;
-
-                //Affiche un bunker
-                bunker.DrawBunker();
-            }
+            //Affiche un bunker
+            bunker.DrawBunkers();
 
             Console.ReadLine();
 
