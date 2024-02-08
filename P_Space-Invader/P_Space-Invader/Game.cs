@@ -15,38 +15,77 @@ namespace P_Space_Invader
     internal class Game
     {
 
+        //Position du vaisseau du joueur sur l'axe X
+        const int STARTING_POSITION_SPACESHIP_ON_X = 35;
+
+        //Position du vaisseau du joueur sur l'axe Y
+        const int STARTING_POSITION_SPACESHIP_ON_Y = 60;
+
+        //Crée un bunker
+        Bunker bunker = new Bunker();
+
+        //Instancie un nouveau vaisseau
+        SpaceShipPlayer spaceShipPlayer = new SpaceShipPlayer();
+
+        int stockedPositionX = STARTING_POSITION_SPACESHIP_ON_X;
+
+        int stockedPositionY = STARTING_POSITION_SPACESHIP_ON_Y;
+
         /// <summary>
         /// Initialise le jeu
         /// </summary>
-      public void InitializeGame()
-      {
+        public void DrawGame()
+        {
+
+            //Largeur de la fenêtre de jeu
+            const int WINDOW_WIDTH = 70;
+
+            //Hauteur de la fenêtre de jeu
+            const int WINDOW_HEIGHT = 40;
 
             //Redimentionnement de la fenêtre de jeu
-            Console.SetWindowSize(90, 30);
+            Console.SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-            //Instancie un nouveau vaisseau
-            SpaceShipPlayer spaceShipPlayer = new SpaceShipPlayer();
-
-            //Position du vaisseau du joueur sur l'axe X
-            const int STARTING_POSITION_SPACESHIP_ON_X = 60;
-
-            //Position du vaisseau du joueur sur l'axe Y
-            const int STARTING_POSITION_SPACESHIP_ON_Y = 70;
-
-            //Affiche le vaisseau sur la console
-            spaceShipPlayer.PlayerSpaceShipDraw(STARTING_POSITION_SPACESHIP_ON_Y,STARTING_POSITION_SPACESHIP_ON_X);
-
-            //TODO: Dessiner les bunkers
-            //TODO: Dessiner les aliens
-
-            //Crée un bunker
-            Bunker bunker = new Bunker();
-
-            //Affiche un bunker
+            //Affiche les bunkers
             bunker.DrawBunkers();
 
-            Console.ReadLine();
+            //Dessine le vaisseau
+            spaceShipPlayer.PlayerSpaceShipDraw(STARTING_POSITION_SPACESHIP_ON_X, STARTING_POSITION_SPACESHIP_ON_Y);
 
         }
+
+        /// <summary>
+        /// Permet de jouer au jeu
+        /// </summary>
+        public void PlayGame()
+        {
+            do
+            {
+                if (Console.ReadKey().Key == ConsoleKey.LeftArrow)
+                {
+  
+                    spaceShipPlayer.PlayerSpaceShipMoving(stockedPositionX, stockedPositionY,true);
+                    stockedPositionX = stockedPositionX - 1;
+
+                }
+                else if (Console.ReadKey().Key == ConsoleKey.RightArrow)
+                {
+                  
+                    spaceShipPlayer.PlayerSpaceShipMoving(stockedPositionX, stockedPositionY, false);
+                    stockedPositionX = stockedPositionX + 1;
+
+                }
+
+            }while(true);
+
+
+
+
+
+
+
+        }
+
+
     }
 }

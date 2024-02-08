@@ -112,7 +112,10 @@ namespace P_Space_Invader
             {
                 Game game = new Game();
                 Console.Clear();
-                game.InitializeGame();
+                game.DrawGame();
+                game.PlayGame();
+
+                Console.ReadLine();
             }
 
 
