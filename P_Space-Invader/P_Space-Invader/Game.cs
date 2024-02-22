@@ -19,7 +19,7 @@ namespace P_Space_Invader
         Bunker bunker = new Bunker();
 
         //Instancie un nouveau vaisseau
-        SpaceShipPlayer spaceShipPlayer = new SpaceShipPlayer();
+        SpaceShipPlayer spaceShipPlayer = new SpaceShipPlayer(posX: 32, nbLives: 3, spaceShipShape: "--|--");
 
         /// <summary>
         /// Initialise le jeu
@@ -54,6 +54,7 @@ namespace P_Space_Invader
             do
             {
                 spaceShipPlayer.PlayerSpaceShipMoving();
+                
 
             } while (true) ;
 

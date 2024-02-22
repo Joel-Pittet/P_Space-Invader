@@ -20,12 +20,17 @@ namespace P_Space_Invader
         /// <summary>
         /// Forme du vaisseau
         /// </summary>
-        private string _spaceShipShape = "--|--";
+        public string SpaceShipShape { get; set; }
 
         /// <summary>
         /// Position du vaisseau sur l'axe X
         /// </summary>
-        private int _positionOnX = 32;
+        public int PositionOnX { get; set; }
+
+        /// <summary>
+        /// Nombre de vie du vaisseau
+        /// </summary>
+        public int NumberOfLives { get; set; }
 
         /// <summary>
         /// Position du vaisseau sur l'axe Y
@@ -42,21 +47,19 @@ namespace P_Space_Invader
         /// </summary>
         private int maxPosLeft = -1;
 
-
-        //private int minPositionOnY = 
-
         /// <summary>
-        /// Vie et mort du vaisseau
+        /// Constructeur avec position sur l'axe X, nombre de vies et forme du vaisseau
         /// </summary>
-        //private bool _isAlive = true;
-
-        /// <summary>
-        /// Constructeur pa défaut
-        /// </summary>
-        public SpaceShipPlayer()
+        /// <param name="posX">Position sur l'axe X</param>
+        /// <param name="nbLives">Nombre de vies</param>
+        /// <param name="spaceShipShape">Forme du vaisseau</param>
+        public SpaceShipPlayer(int posX, int nbLives, string spaceShipShape)
         {
-
+            PositionOnX = posX;
+            NumberOfLives = nbLives;
+            SpaceShipShape = spaceShipShape;
         }
+
 
         /// <summary>
         /// Affiche le vaisseau
@@ -64,15 +67,15 @@ namespace P_Space_Invader
         public void PlayerSpaceShipDraw()
         {
             //Position du vaisseau
-            Console.CursorLeft = _positionOnX;
+            Console.CursorLeft = PositionOnX;
             Console.CursorTop = _POSITION_ON_Y;
 
             //Affiche le vaisseau du vaisseau et des espaces de chaque côtés
             //pour que le vaisseau ne laisse pas de trace
-            Console.WriteLine(" " + _spaceShipShape + " ");
+            Console.WriteLine(" " + SpaceShipShape + " ");
         }
 
-       
+
         /// <summary>
         /// Mouvement du vaisseau du joueur
         /// </summary>
@@ -85,28 +88,68 @@ namespace P_Space_Invader
             keyPressed = Console.ReadKey().Key;
 
             //Lorsque la flèche de gauche est appuyée
-            if (keyPressed == ConsoleKey.LeftArrow && (_positionOnX - 1) != maxPosLeft)
+            if (keyPressed == ConsoleKey.LeftArrow && (PositionOnX - 1) != maxPosLeft)
             {
                 //Change la position du vaisseau de 1 à gauche
-                _positionOnX = _positionOnX - 1;
+                PositionOnX = PositionOnX - 1;
 
                 //Dessine le vaisseau
                 PlayerSpaceShipDraw();
 
             }// Lorsque la flèche de droite est appuyée
-            else if (keyPressed == ConsoleKey.RightArrow && (_positionOnX + 1) != maxPosRight)
+            else if (keyPressed == ConsoleKey.RightArrow && (PositionOnX + 1) != maxPosRight)
             {
                 //Change la position du vaisseau de 1 à droite
-                _positionOnX = _positionOnX + 1;
+                PositionOnX = PositionOnX + 1;
 
                 //Dessine le vaisseau
                 PlayerSpaceShipDraw();
             }
             else
             {
-               
+
 
             }
+        }
+
+        /// <summary>
+        /// Tire un missile
+        /// </summary>
+        public void Shoot()
+        {
+            Missile missile = new Missile(posX: 32, posY: 50, nbLives: 1, missileShape: "|");
+
+            do
+            {
+                //le missile bouge tant qu'il a pas touché le bors de la fenetre
+            } while ();
+        }
+                
+        /// <summary>
+        /// Vie et mort du vaisseau
+        /// </summary>
+        /// <returns>Retourne vrai si le nombre de vie est supérieur à 0</returns>
+        public bool isAlive()
+        {
+            bool isAlive = false;
+
+            if(NumberOfLives > 0)
+            {
+                isAlive = true;
+            }
+
+            return isAlive;
+        }
+
+
+
+
+        /// <summary>
+        /// Met à jour le jeu
+        /// </summary>
+        public void Update()
+        {
+
         }
 
     }
