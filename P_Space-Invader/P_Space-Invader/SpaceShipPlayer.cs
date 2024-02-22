@@ -35,7 +35,7 @@ namespace P_Space_Invader
         /// <summary>
         /// Vie et mort du vaisseau
         /// </summary>
-        private bool _isAlive = true;
+        //private bool _isAlive = true;
 
         /// <summary>
         /// Constructeur pa défaut
@@ -51,7 +51,6 @@ namespace P_Space_Invader
         /// </summary>
         public void PlayerSpaceShipDraw(int cursorOnX, int cursorOnY)
         {
-
             //Récupère la position du vaisseau
             _cursorOnX = cursorOnX;
             _cursorOnY = cursorOnY;
@@ -72,11 +71,14 @@ namespace P_Space_Invader
         /// <param name="isLeft">Savoir si la flèche de droite ou de gauche à été touchée</param>
         public void PlayerSpaceShipMoving(int stockedPositionX, int stockedPositionY, bool isLeft)
         {
+
+            //Efface la console
+            Console.Clear();
+
+
             //Lorsque que la flèche gauche est touchée
-            if(isLeft)
+            if (isLeft)
             {
-                //Efface la console
-                Console.Clear();
 
                 //Debug.WriteLine("stockedPositionX: " + stockedPositionX--);
 
@@ -86,9 +88,7 @@ namespace P_Space_Invader
             }//Lorsque que la flèche droite est touchées
             else
             {
-                //Efface la console
-                Console.Clear();
-
+              
                 //Debug.WriteLine("stockedPositionX: "+ stockedPositionX++);
 
                 //Réaffiche le vaisseau un cran à droite de son ancienne position

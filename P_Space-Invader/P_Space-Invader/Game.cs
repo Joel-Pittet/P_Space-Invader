@@ -19,7 +19,7 @@ namespace P_Space_Invader
         const int STARTING_POSITION_SPACESHIP_ON_X = 35;
 
         //Position du vaisseau du joueur sur l'axe Y
-        const int STARTING_POSITION_SPACESHIP_ON_Y = 60;
+        const int STARTING_POSITION_SPACESHIP_ON_Y = 20;
 
         //Crée un bunker
         Bunker bunker = new Bunker();
@@ -59,24 +59,36 @@ namespace P_Space_Invader
         /// </summary>
         public void PlayGame()
         {
+
+            //Boucle pour bouger le vaisseau durant la partie
             do
             {
-                if (Console.ReadKey().Key == ConsoleKey.LeftArrow)
+                ConsoleKey keyPressed;
+
+                //Récupère la touche pressée et la stocke
+                keyPressed = Console.ReadKey().Key;
+
+                //Lorsque la flèche de gauche est appuyée
+                if (keyPressed == ConsoleKey.LeftArrow)
                 {
-  
+                    //efface la console et réaffiche le vaisseau a gauche de l'ancienne position   
                     spaceShipPlayer.PlayerSpaceShipMoving(stockedPositionX, stockedPositionY,true);
+
+                    //récupère la position du vaisseau après le déplacement
                     stockedPositionX = stockedPositionX - 1;
 
-                }
-                else if (Console.ReadKey().Key == ConsoleKey.RightArrow)
+                }// Lorsque la flèche de gauche est appuyée
+                else if (keyPressed == ConsoleKey.RightArrow)
                 {
-                  
+                    //efface la console et réaffiche le vaisseau a droite de l'ancienne position  
                     spaceShipPlayer.PlayerSpaceShipMoving(stockedPositionX, stockedPositionY, false);
+
+                    //récupère la position du vaisseau après le déplacement
                     stockedPositionX = stockedPositionX + 1;
 
                 }
 
-            }while(true);
+            } while (true) ;
 
 
 
