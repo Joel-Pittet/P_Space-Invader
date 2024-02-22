@@ -15,21 +15,11 @@ namespace P_Space_Invader
     internal class Game
     {
 
-        //Position du vaisseau du joueur sur l'axe X
-        const int STARTING_POSITION_SPACESHIP_ON_X = 35;
-
-        //Position du vaisseau du joueur sur l'axe Y
-        const int STARTING_POSITION_SPACESHIP_ON_Y = 20;
-
         //Crée un bunker
         Bunker bunker = new Bunker();
 
         //Instancie un nouveau vaisseau
         SpaceShipPlayer spaceShipPlayer = new SpaceShipPlayer();
-
-        int stockedPositionX = STARTING_POSITION_SPACESHIP_ON_X;
-
-        int stockedPositionY = STARTING_POSITION_SPACESHIP_ON_Y;
 
         /// <summary>
         /// Initialise le jeu
@@ -47,10 +37,10 @@ namespace P_Space_Invader
             Console.SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
             //Affiche les bunkers
-            bunker.DrawBunkers();
+            //bunker.DrawBunkers();
 
             //Dessine le vaisseau
-            spaceShipPlayer.PlayerSpaceShipDraw(STARTING_POSITION_SPACESHIP_ON_X, STARTING_POSITION_SPACESHIP_ON_Y);
+            spaceShipPlayer.PlayerSpaceShipDraw();
 
         }
 
@@ -63,30 +53,7 @@ namespace P_Space_Invader
             //Boucle pour bouger le vaisseau durant la partie
             do
             {
-                ConsoleKey keyPressed;
-
-                //Récupère la touche pressée et la stocke
-                keyPressed = Console.ReadKey().Key;
-
-                //Lorsque la flèche de gauche est appuyée
-                if (keyPressed == ConsoleKey.LeftArrow)
-                {
-                    //efface la console et réaffiche le vaisseau a gauche de l'ancienne position   
-                    spaceShipPlayer.PlayerSpaceShipMoving(stockedPositionX, stockedPositionY,true);
-
-                    //récupère la position du vaisseau après le déplacement
-                    stockedPositionX = stockedPositionX - 1;
-
-                }// Lorsque la flèche de gauche est appuyée
-                else if (keyPressed == ConsoleKey.RightArrow)
-                {
-                    //efface la console et réaffiche le vaisseau a droite de l'ancienne position  
-                    spaceShipPlayer.PlayerSpaceShipMoving(stockedPositionX, stockedPositionY, false);
-
-                    //récupère la position du vaisseau après le déplacement
-                    stockedPositionX = stockedPositionX + 1;
-
-                }
+                spaceShipPlayer.PlayerSpaceShipMoving();
 
             } while (true) ;
 

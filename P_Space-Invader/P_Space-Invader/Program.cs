@@ -60,7 +60,7 @@ namespace P_Space_Invader
 
             }
 
-            
+            //Retourne le choix de l'utilisateur
             char SelectedOption()
             {
                 Console.WriteLine("Veuillez entrer la lettre qui correspond à votre choix");

@@ -23,14 +23,27 @@ namespace P_Space_Invader
         private string _spaceShipShape = "--|--";
 
         /// <summary>
-        /// Position du curseur sur l'axe X
+        /// Position du vaisseau sur l'axe X
         /// </summary>
-        private int _cursorOnX = 0;
+        private int _positionOnX = 32;
 
         /// <summary>
-        /// Position du curseur sur l'axe Y
+        /// Position du vaisseau sur l'axe Y
         /// </summary>
-        private int _cursorOnY = 0;
+        private const int _POSITION_ON_Y = 50;
+
+        /// <summary>
+        /// Enplacement maximum du vaisseau sur la droite de la fenêtre
+        /// </summary>
+        private int maxPosRight = 70 - 6;
+
+        /// <summary>
+        /// Enplacement maximum du vaisseau sur la gauche de la fenêtre
+        /// </summary>
+        private int maxPosLeft = -1;
+
+
+        //private int minPositionOnY = 
 
         /// <summary>
         /// Vie et mort du vaisseau
@@ -45,58 +58,56 @@ namespace P_Space_Invader
 
         }
 
-
         /// <summary>
         /// Affiche le vaisseau
         /// </summary>
-        public void PlayerSpaceShipDraw(int cursorOnX, int cursorOnY)
+        public void PlayerSpaceShipDraw()
         {
-            //Récupère la position du vaisseau
-            _cursorOnX = cursorOnX;
-            _cursorOnY = cursorOnY;
+            //Position du vaisseau
+            Console.CursorLeft = _positionOnX;
+            Console.CursorTop = _POSITION_ON_Y;
 
-            //Position initiale du vaisseau
-            Console.CursorLeft = _cursorOnX;
-            Console.CursorTop = _cursorOnY;
-
-            //Affiche le vaisseau du vaisseau
-            Console.WriteLine(_spaceShipShape);
+            //Affiche le vaisseau du vaisseau et des espaces de chaque côtés
+            //pour que le vaisseau ne laisse pas de trace
+            Console.WriteLine(" " + _spaceShipShape + " ");
         }
 
+       
         /// <summary>
-        /// Déplacement du vaisseau du joueur
+        /// Mouvement du vaisseau du joueur
         /// </summary>
-        /// <param name="stockedPositionX">Position du vaisseau sur l'axe X</param>
-        /// <param name="stockedPositionY">Position du vaisseau sur l'axe Y</param>
-        /// <param name="isLeft">Savoir si la flèche de droite ou de gauche à été touchée</param>
-        public void PlayerSpaceShipMoving(int stockedPositionX, int stockedPositionY, bool isLeft)
+        public void PlayerSpaceShipMoving()
         {
+            //stocke la touche pressée pour savoir s'il faut bouger à gauche ou à droite
+            ConsoleKey keyPressed;
 
-            //Efface la console
-            Console.Clear();
+            //Récupère la touche pressée et la stocke
+            keyPressed = Console.ReadKey().Key;
 
-
-            //Lorsque que la flèche gauche est touchée
-            if (isLeft)
+            //Lorsque la flèche de gauche est appuyée
+            if (keyPressed == ConsoleKey.LeftArrow && (_positionOnX - 1) != maxPosLeft)
             {
+                //Change la position du vaisseau de 1 à gauche
+                _positionOnX = _positionOnX - 1;
 
-                //Debug.WriteLine("stockedPositionX: " + stockedPositionX--);
+                //Dessine le vaisseau
+                PlayerSpaceShipDraw();
 
-                //Réaffiche le vaisseau un cran à gauche de son ancienne position
-                PlayerSpaceShipDraw(stockedPositionX--, stockedPositionY);
+            }// Lorsque la flèche de droite est appuyée
+            else if (keyPressed == ConsoleKey.RightArrow && (_positionOnX + 1) != maxPosRight)
+            {
+                //Change la position du vaisseau de 1 à droite
+                _positionOnX = _positionOnX + 1;
 
-            }//Lorsque que la flèche droite est touchées
+                //Dessine le vaisseau
+                PlayerSpaceShipDraw();
+            }
             else
             {
-              
-                //Debug.WriteLine("stockedPositionX: "+ stockedPositionX++);
-
-                //Réaffiche le vaisseau un cran à droite de son ancienne position
-                PlayerSpaceShipDraw(stockedPositionX++, stockedPositionY);
-
+               
 
             }
-
         }
+
     }
 }
