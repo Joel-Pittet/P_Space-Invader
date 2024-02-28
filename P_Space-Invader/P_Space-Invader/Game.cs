@@ -31,7 +31,7 @@ namespace P_Space_Invader
             const int WINDOW_WIDTH = 70;
 
             //Hauteur de la fenêtre de jeu
-            const int WINDOW_HEIGHT = 40;
+            const int WINDOW_HEIGHT = 70;
 
             //Redimentionnement de la fenêtre de jeu
             Console.SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -54,6 +54,8 @@ namespace P_Space_Invader
             do
             {
                 spaceShipPlayer.PlayerSpaceShipMoving();
+                spaceShipPlayer.Update();
+
                 
 
             } while (true) ;

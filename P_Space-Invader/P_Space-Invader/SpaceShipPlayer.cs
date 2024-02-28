@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Threading;
 
 namespace P_Space_Invader
 {
@@ -33,9 +34,14 @@ namespace P_Space_Invader
         public int NumberOfLives { get; set; }
 
         /// <summary>
-        /// Position du vaisseau sur l'axe Y
+        /// Position initiale du vaisseau sur l'axe Y
         /// </summary>
-        private const int _POSITION_ON_Y = 50;
+        private const int _STARTING_POSITION_ON_Y = 20;
+
+        /// <summary>
+        /// Position initiale du vaisseau sur l'axe X
+        /// </summary>
+        private const int _STARTING_POSITION_ON_X = 35;
 
         /// <summary>
         /// Enplacement maximum du vaisseau sur la droite de la fenêtre
@@ -60,6 +66,8 @@ namespace P_Space_Invader
             SpaceShipShape = spaceShipShape;
         }
 
+        //Missile pour que le joueur puisse tirer avec le vaisseau
+        Missile missile = new Missile(posX: _STARTING_POSITION_ON_X, posY: _STARTING_POSITION_ON_Y, nbLives: 1, missileShape: "|");
 
         /// <summary>
         /// Affiche le vaisseau
@@ -68,7 +76,7 @@ namespace P_Space_Invader
         {
             //Position du vaisseau
             Console.CursorLeft = PositionOnX;
-            Console.CursorTop = _POSITION_ON_Y;
+            Console.CursorTop = _STARTING_POSITION_ON_Y;
 
             //Affiche le vaisseau du vaisseau et des espaces de chaque côtés
             //pour que le vaisseau ne laisse pas de trace
@@ -105,11 +113,7 @@ namespace P_Space_Invader
                 //Dessine le vaisseau
                 PlayerSpaceShipDraw();
             }
-            else
-            {
-
-
-            }
+            
         }
 
         /// <summary>
@@ -117,12 +121,15 @@ namespace P_Space_Invader
         /// </summary>
         public void Shoot()
         {
-            Missile missile = new Missile(posX: 32, posY: 50, nbLives: 1, missileShape: "|");
-
-            do
+            if(missile.IsAlive() == false)
             {
-                //le missile bouge tant qu'il a pas touché le bors de la fenetre
-            } while ();
+                //Instancie un nouveau missile
+                Missile missile = new Missile(posX: PositionOnX, posY: _STARTING_POSITION_ON_Y, nbLives: 1, missileShape: "|");
+
+                //Dessine le missile
+                missile.DrawMissile();
+            }
+            
         }
                 
         /// <summary>
@@ -142,13 +149,59 @@ namespace P_Space_Invader
         }
 
 
-
-
         /// <summary>
         /// Met à jour le jeu
         /// </summary>
         public void Update()
         {
+
+            //stocke la touche pressée
+            ConsoleKey keyPressed;
+
+            //Récupère la touche pressée et la stocke
+            keyPressed = Console.ReadKey().Key;
+
+            //Si la touche pressée est la barre d'espace 
+            if (keyPressed == ConsoleKey.Spacebar)
+            {
+                //Appelle la méthode pour créer un nouveau missile
+                Shoot();
+
+                do
+                {
+
+                    //Place le curseur à la position du missile pour l'effacer
+                    Console.SetCursorPosition(missile.PositionOnX, missile.PositionOnY);
+
+                    //Affiche un espace pour cacher l'ancienne position du missile
+                    Console.WriteLine(" ");
+
+                    //Change la position du missile
+                    missile.PositionOnY = missile.PositionOnY - 1;
+
+                    //Place le curseur à la nouvelle position du missile
+                    Console.SetCursorPosition(missile.PositionOnX, missile.PositionOnY);
+
+                    //Dessine le missile
+                    missile.DrawMissile();
+
+                    //Vitesse d'affichage du missile
+                    Thread.Sleep(Convert.ToInt32(missile.speed));
+
+                } while (missile.PositionOnY > 1);
+
+                //Le missile est mort
+                missile.NumberOfLives = 0;
+
+                //Place le curseur à la place de mort du missile
+                Console.SetCursorPosition(missile.PositionOnX, missile.PositionOnY);
+
+                //Efface le missile mort
+                Console.WriteLine(" ");
+
+
+            }
+
 
         }
 

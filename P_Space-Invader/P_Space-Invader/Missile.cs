@@ -36,6 +36,13 @@ namespace P_Space_Invader
         /// </summary>
         public int NumberOfLives { get; set; }
 
+
+        /// <summary>
+        /// Vitesse du missile
+        /// </summary>
+        public double speed = 300;
+
+
         /// <summary>
         /// Constructeur avec position, nombre de vie et forme du missile
         /// </summary>
@@ -53,10 +60,26 @@ namespace P_Space_Invader
         }
 
         /// <summary>
+        /// Dessine le missile
+        /// </summary>
+        public void DrawMissile()
+        {
+            //Position du missile
+            Console.CursorLeft = PositionOnX;
+            Console.CursorTop = PositionOnY;
+
+            //Dessine le missile
+            Console.WriteLine(MissileShape);
+
+        }
+
+
+
+        /// <summary>
         /// Vie et mort du missile
         /// </summary>
         /// <returns>Retourne vrai si le nombre de vie est supérieur à 0</returns>
-        public bool isAlive()
+        public bool IsAlive()
         {
             bool isAlive = false;
 
@@ -67,8 +90,5 @@ namespace P_Space_Invader
 
             return isAlive;
         }
-
-
-
     }
 }
