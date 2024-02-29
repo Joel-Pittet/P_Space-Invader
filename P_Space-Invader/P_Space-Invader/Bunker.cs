@@ -15,7 +15,69 @@ namespace P_Space_Invader
 {
     internal class Bunker
     {
+        /// <summary>
+        /// Position du bunker sur l'axe X
+        /// </summary>
+        int _posX = 0;
+
+        /// <summary>
+        /// Position du bunker sur l'axe Y
+        /// </summary>
+        int _posY = 0;
+
+        /// <summary>
+        /// GETTER / SETTER
+        /// Position du bunker sur l'axe X
+        /// </summary>
+        public int PosX
+        {
+            get
+            {
+                return _posX;
+            }
+            set
+            {
+                _posX = value;
+            }
+        }
+
+        /// <summary>
+        /// GETTER / SETTER
+        /// Position du bunker sur l'axe Y
+        /// </summary>
+        public int PosY
+        {
+            get
+            {
+                return _posY;
+            }
+            set
+            {
+                _posY= value;
+            }
+        }
         
+
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="posX">Position du bunker sur l'axe X</param>
+        /// <param name="posY">Position du bunker sur l'axe Y</param>
+        public Bunker(int posX, int posY)
+        {
+
+        }
+
+
+        /// <summary>
+        /// Ne fait rien
+        /// </summary>
+        public void Update()
+        {
+
+        }
+
+        /*
         public void DrawBunkers()
         {
             //Forme du bunker
@@ -93,7 +155,7 @@ namespace P_Space_Invader
             
             
             
-        }
-        
+        }*/
+
     }
 }

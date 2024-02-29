@@ -9,11 +9,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace P_Space_Invader
 {
     internal class Program
     {
+
+        [STAThread]
         static void Main(string[] args)
         {
 
@@ -112,6 +115,7 @@ namespace P_Space_Invader
             {
                 Game game = new Game();
                 Console.Clear();
+                Console.CursorVisible = false;
                 game.DrawGame();
                 game.PlayGame();
 

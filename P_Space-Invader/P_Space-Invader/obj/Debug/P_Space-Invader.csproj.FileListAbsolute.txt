@@ -13,3 +13,4 @@ E:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invad
 E:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\bin\Debug\P_Space-Invader.exe.config
 E:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\bin\Debug\P_Space-Invader.exe
 E:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\bin\Debug\P_Space-Invader.pdb
+D:\FPA 2023-2025\1ère année\Chenaux\ProgrammationPOO\I-226\P_Dev\P_Space-Invader\P_Space-Invader\obj\Debug\P_Space-Invader.csproj.SuggestedBindingRedirects.cache

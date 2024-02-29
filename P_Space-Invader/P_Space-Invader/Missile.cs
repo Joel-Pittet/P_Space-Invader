@@ -40,7 +40,7 @@ namespace P_Space_Invader
         /// <summary>
         /// Vitesse du missile
         /// </summary>
-        public double speed = 300;
+        public double speed = 100;
 
 
         /// <summary>
@@ -72,8 +72,6 @@ namespace P_Space_Invader
             Console.WriteLine(MissileShape);
 
         }
-
-
 
         /// <summary>
         /// Vie et mort du missile

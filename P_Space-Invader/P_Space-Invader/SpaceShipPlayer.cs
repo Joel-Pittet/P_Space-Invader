@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows.Input;
 
 namespace P_Space_Invader
 {
@@ -46,12 +47,12 @@ namespace P_Space_Invader
         /// <summary>
         /// Enplacement maximum du vaisseau sur la droite de la fenêtre
         /// </summary>
-        private int maxPosRight = 70 - 6;
+        private int maxPosRight = Console.WindowWidth - 6;
 
         /// <summary>
         /// Enplacement maximum du vaisseau sur la gauche de la fenêtre
         /// </summary>
-        private int maxPosLeft = -1;
+        private int maxPosLeft = - 1;
 
         /// <summary>
         /// Constructeur avec position sur l'axe X, nombre de vies et forme du vaisseau
@@ -89,14 +90,9 @@ namespace P_Space_Invader
         /// </summary>
         public void PlayerSpaceShipMoving()
         {
-            //stocke la touche pressée pour savoir s'il faut bouger à gauche ou à droite
-            ConsoleKey keyPressed;
-
-            //Récupère la touche pressée et la stocke
-            keyPressed = Console.ReadKey().Key;
 
             //Lorsque la flèche de gauche est appuyée
-            if (keyPressed == ConsoleKey.LeftArrow && (PositionOnX - 1) != maxPosLeft)
+            if (Keyboard.IsKeyDown(Key.Left) && (PositionOnX - 1) != maxPosLeft)
             {
                 //Change la position du vaisseau de 1 à gauche
                 PositionOnX = PositionOnX - 1;
@@ -105,7 +101,7 @@ namespace P_Space_Invader
                 PlayerSpaceShipDraw();
 
             }// Lorsque la flèche de droite est appuyée
-            else if (keyPressed == ConsoleKey.RightArrow && (PositionOnX + 1) != maxPosRight)
+            else if (Keyboard.IsKeyDown(Key.Right) && (PositionOnX + 1) != maxPosRight)
             {
                 //Change la position du vaisseau de 1 à droite
                 PositionOnX = PositionOnX + 1;
@@ -117,14 +113,14 @@ namespace P_Space_Invader
         }
 
         /// <summary>
-        /// Tire un missile
+        /// Remet un vie au missile pour que le joueur puisse tirer à nouveau
         /// </summary>
         public void Shoot()
         {
             if(missile.IsAlive() == false)
             {
-                //Instancie un nouveau missile
-                Missile missile = new Missile(posX: PositionOnX, posY: _STARTING_POSITION_ON_Y, nbLives: 1, missileShape: "|");
+                //Rajoute une vie pour créer un nouveau missile
+                missile.NumberOfLives = 1;
 
                 //Dessine le missile
                 missile.DrawMissile();
@@ -155,20 +151,40 @@ namespace P_Space_Invader
         public void Update()
         {
 
-            //stocke la touche pressée
-            ConsoleKey keyPressed;
-
-            //Récupère la touche pressée et la stocke
-            keyPressed = Console.ReadKey().Key;
-
             //Si la touche pressée est la barre d'espace 
-            if (keyPressed == ConsoleKey.Spacebar)
+            if (Keyboard.IsKeyDown(Key.Space))
             {
+                //Pour eviter d'effacer le centre du vaisseau
+                bool isFirstRow = true;
+
+                //Réinitialise la position du missile pour que le nouveau missile reparte depuis la position du vaisseau
+                missile.PositionOnX = PositionOnX + 3;
+                missile.PositionOnY = _STARTING_POSITION_ON_Y;
+
                 //Appelle la méthode pour créer un nouveau missile
                 Shoot();
 
                 do
                 {
+                    //Si le missile vient d'etre tirer on efface pas la dernière position du missile
+                    //pour éviter d'effacer le vaisseau
+                    if (isFirstRow)
+                    {
+                        //Change le bool pour le prochain tire
+                        isFirstRow = false;
+
+                        //Change la position du missile
+                        missile.PositionOnY = missile.PositionOnY - 1;
+
+                        //Place le curseur à la nouvelle position du missile
+                        Console.SetCursorPosition(missile.PositionOnX, missile.PositionOnY);
+
+                        //Dessine le missile
+                        missile.DrawMissile();
+
+                        //Vitesse d'affichage du missile
+                        Thread.Sleep(Convert.ToInt32(missile.speed));
+                    }
 
                     //Place le curseur à la position du missile pour l'effacer
                     Console.SetCursorPosition(missile.PositionOnX, missile.PositionOnY);
@@ -198,7 +214,6 @@ namespace P_Space_Invader
 
                 //Efface le missile mort
                 Console.WriteLine(" ");
-
 
             }
 
