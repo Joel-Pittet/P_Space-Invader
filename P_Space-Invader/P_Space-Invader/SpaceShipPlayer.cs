@@ -35,6 +35,11 @@ namespace P_Space_Invader
         public int NumberOfLives { get; set; }
 
         /// <summary>
+        /// Vitesse de déplacement du vaisseau
+        /// </summary>
+        private double _spaceShipSpeed = 30;
+
+        /// <summary>
         /// Position initiale du vaisseau sur l'axe Y
         /// </summary>
         private const int _STARTING_POSITION_ON_Y = 20;
@@ -86,33 +91,6 @@ namespace P_Space_Invader
 
 
         /// <summary>
-        /// Mouvement du vaisseau du joueur
-        /// </summary>
-        public void PlayerSpaceShipMoving()
-        {
-
-            //Lorsque la flèche de gauche est appuyée
-            if (Keyboard.IsKeyDown(Key.Left) && (PositionOnX - 1) != maxPosLeft)
-            {
-                //Change la position du vaisseau de 1 à gauche
-                PositionOnX = PositionOnX - 1;
-
-                //Dessine le vaisseau
-                PlayerSpaceShipDraw();
-
-            }// Lorsque la flèche de droite est appuyée
-            else if (Keyboard.IsKeyDown(Key.Right) && (PositionOnX + 1) != maxPosRight)
-            {
-                //Change la position du vaisseau de 1 à droite
-                PositionOnX = PositionOnX + 1;
-
-                //Dessine le vaisseau
-                PlayerSpaceShipDraw();
-            }
-            
-        }
-
-        /// <summary>
         /// Remet un vie au missile pour que le joueur puisse tirer à nouveau
         /// </summary>
         public void Shoot()
@@ -150,6 +128,32 @@ namespace P_Space_Invader
         /// </summary>
         public void Update()
         {
+
+            //Lorsque la flèche de gauche est appuyée
+            if (Keyboard.IsKeyDown(Key.Left) && (PositionOnX - 1) != maxPosLeft)
+            {
+                //Change la position du vaisseau de 1 à gauche
+                PositionOnX = PositionOnX - 1;
+
+                //Patiente avant d'afficher le vaisseau, correspond à la vitesse du vaisseau
+                Thread.Sleep(Convert.ToInt32(_spaceShipSpeed));
+
+                //Dessine le vaisseau
+                PlayerSpaceShipDraw();
+
+            }// Lorsque la flèche de droite est appuyée
+            else if (Keyboard.IsKeyDown(Key.Right) && (PositionOnX + 1) != maxPosRight)
+            {
+                //Change la position du vaisseau de 1 à droite
+                PositionOnX = PositionOnX + 1;
+
+                // Patiente avant d'afficher le vaisseau, correspond à la vitesse du vaisseau
+                Thread.Sleep(Convert.ToInt32(_spaceShipSpeed));
+
+                //Dessine le vaisseau
+                PlayerSpaceShipDraw();
+            }
+
 
             //Si la touche pressée est la barre d'espace 
             if (Keyboard.IsKeyDown(Key.Space))

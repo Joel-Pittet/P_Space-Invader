@@ -53,10 +53,10 @@ namespace P_Space_Invader
             }
             set
             {
-                _posY= value;
+                _posY = value;
             }
         }
-        
+
 
         /// <summary>
         /// Constructeur
@@ -65,6 +65,68 @@ namespace P_Space_Invader
         /// <param name="posY">Position du bunker sur l'axe Y</param>
         public Bunker(int posX, int posY)
         {
+            _posX = posX;
+            _posY = posY;
+        }
+
+
+        public void DrawBunker()
+        {
+            //Forme du bunker
+            string bunkerTop = ("XXXXX");
+            string bunkerMiddle = ("XXXXXXX");
+            string bunkerBottom = ("XXXXXXXXX");
+
+            //Étages du bunker
+            const int NB_BUNKER_FLOOR = 3;
+
+            for (int i = 1; i < NB_BUNKER_FLOOR; i++)
+            {
+                if (i == 1)
+                {
+                    //Position initiale du bunker
+                    Console.SetCursorPosition(_posX, _posY);
+
+                    //Dessine le haut des bunker
+                    Console.WriteLine(bunkerTop);
+
+                }
+                else if (i == 2)
+                {
+                    //Décale de 1 l'apparition de l'étage suivant pour un effet pyramide
+                    _posX--;
+
+                    //Position initiale du bunker sur l'axe X
+                    Console.CursorLeft =  _posX;
+
+                    //Descend le curseur de 1 pour afficher le niveau suivant en dessous du précédent
+                    _posY++;
+
+                    //Position sur l'axe Y
+                    Console.CursorTop = _posY;
+
+                    //Dessine le milieu des bunkers
+                    Console.WriteLine(bunkerMiddle);
+                }
+                else
+                {
+                    //Décale de 1 l'apparition de l'étage suivant pour un effet pyramide
+                    _posX--;
+
+                    //Position initiale du bunker
+                    Console.CursorLeft = _posX;
+
+                    //Descend le curseur de 1 pour afficher le niveau suivant en dessous du précédent
+                    _posY++;
+
+                    //Position sur l'axe Y
+                    Console.CursorTop = _posY;
+
+                    //Dessine le bas des bunkers
+                    Console.WriteLine(bunkerBottom);
+                }
+
+            }
 
         }
 
@@ -77,85 +139,9 @@ namespace P_Space_Invader
 
         }
 
-        /*
-        public void DrawBunkers()
-        {
-            //Forme du bunker
-            string bunkerTop =      ("XXXXX");
-            string bunkerMiddle =  ("XXXXXXX");
-            string bunkerBottom = ("XXXXXXXXX");
 
-            //Nombre de bunker
-            const int NB_BUNKER = 3;
-
-            //Étages du bunker
-            const int NB_BUNKER_FLOOR = 3;
-
-            //Position de CursorTop
-            int cursorTop = 50;
-
-            //Position de l'étage du bunker sur cursorLeft
-            int cursorLeftFloor = 20;
-
-            //Distance de séparation entre les bunkers
-            const int DISTANCE_BETWEEN_BUNKERS = 25;
-
-            for(int i = 0; i < NB_BUNKER; i++)
-            {
-                //Initialisation du CursorTop pour que les bunkers soient tous au même niveau (même ligne)
-                cursorTop = 50;
-
-
-                for (int y = 0; y < NB_BUNKER_FLOOR; y++)
-                {
-                    if(y == 0)
-                    {
-                        //Position initiale du bunker
-                        Console.CursorLeft = i * DISTANCE_BETWEEN_BUNKERS + cursorLeftFloor;
-                        Console.CursorTop = cursorTop;
-
-                        //Dessine le haut des bunkers
-                        Console.WriteLine(bunkerTop);
-
-                    }else if (y == 1)
-                    {
-                        //Décale de 1 l'apparition de l'étage suivant pour un effet pyramide
-                        cursorLeftFloor--;
-
-                        //Position initiale du bunker sur l'axe X
-                        Console.CursorLeft = i * DISTANCE_BETWEEN_BUNKERS + cursorLeftFloor;
-
-                        //Descend le curseur de 1 pour afficher le niveau suivant en dessous du précédent
-                        cursorTop++;
-
-                        //Position sur l'axe Y
-                        Console.CursorTop = cursorTop;
-
-                        //Dessine le milieu des bunkers
-                        Console.WriteLine(bunkerMiddle);
-                    }
-                    else
-                    {
-                        //Décale de 1 l'apparition de l'étage suivant pour un effet pyramide
-                        cursorLeftFloor--;
-
-                        //Position initiale du bunker
-                        Console.CursorLeft = i * DISTANCE_BETWEEN_BUNKERS + cursorLeftFloor;
-                        cursorTop++;
-                        Console.CursorTop = cursorTop;
-
-                        //Dessine le bas des bunkers
-                        Console.WriteLine(bunkerBottom);
-                    }
-                    
-                }
-            }
-            
-
-            
-            
-            
-        }*/
 
     }
+
+
 }

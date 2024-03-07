@@ -118,8 +118,6 @@ namespace P_Space_Invader
                 Console.CursorVisible = false;
                 game.DrawGame();
                 game.PlayGame();
-
-                Console.ReadLine();
             }
 
 
