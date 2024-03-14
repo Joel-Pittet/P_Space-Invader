@@ -42,7 +42,7 @@ namespace P_Space_Invader
         /// <summary>
         /// Position initiale du vaisseau sur l'axe Y
         /// </summary>
-        private const int _STARTING_POSITION_ON_Y = 20;
+        private const int _STARTING_POSITION_ON_Y = 30;
 
         /// <summary>
         /// Position initiale du vaisseau sur l'axe X
@@ -208,7 +208,7 @@ namespace P_Space_Invader
                     //Vitesse d'affichage du missile
                     Thread.Sleep(Convert.ToInt32(missile.speed));
 
-                } while (missile.PositionOnY > 1);
+                } while (missile.PositionOnY > 2);
 
                 //Le missile est mort
                 missile.NumberOfLives = 0;

@@ -23,7 +23,7 @@ namespace P_Space_Invader
 
 
         //Instancie un nouveau vaisseau
-        SpaceShipPlayer spaceShipPlayer = new SpaceShipPlayer(posX: 32, nbLives: 3, spaceShipShape: "--|--");
+        SpaceShipPlayer spaceShipPlayer = new SpaceShipPlayer(posX: Console.WindowWidth / 2, nbLives: 3, spaceShipShape: "--|--");
 
         /// <summary>
         /// Initialise le jeu
@@ -40,10 +40,10 @@ namespace P_Space_Invader
             //Redimentionnement de la fenêtre de jeu
             Console.SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-            for(int i = 0; i < 1; i++)
+            for(int i = 1; i < 4; i++)
             {
                 //Crée un bunker
-                Bunker bunker = new Bunker(50, 100);
+                Bunker bunker = new Bunker(30 * i, 24);
 
                 //Dessine le bunker
                 bunker.DrawBunker();

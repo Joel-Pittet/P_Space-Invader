@@ -18,12 +18,12 @@ namespace P_Space_Invader
         /// <summary>
         /// Position du bunker sur l'axe X
         /// </summary>
-        int _posX = 0;
+        int _posX;
 
         /// <summary>
         /// Position du bunker sur l'axe Y
         /// </summary>
-        int _posY = 0;
+        int _posY;
 
         /// <summary>
         /// GETTER / SETTER
@@ -69,7 +69,9 @@ namespace P_Space_Invader
             _posY = posY;
         }
 
-
+        /// <summary>
+        /// Dessine le bunker
+        /// </summary>
         public void DrawBunker()
         {
             //Forme du bunker
@@ -80,7 +82,7 @@ namespace P_Space_Invader
             //Étages du bunker
             const int NB_BUNKER_FLOOR = 3;
 
-            for (int i = 1; i < NB_BUNKER_FLOOR; i++)
+            for (int i = 1; i < NB_BUNKER_FLOOR + 1; i++)
             {
                 if (i == 1)
                 {
@@ -108,7 +110,7 @@ namespace P_Space_Invader
                     //Dessine le milieu des bunkers
                     Console.WriteLine(bunkerMiddle);
                 }
-                else
+                else if(i == 3)
                 {
                     //Décale de 1 l'apparition de l'étage suivant pour un effet pyramide
                     _posX--;
