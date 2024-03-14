@@ -49,7 +49,6 @@ namespace P_Space_Invader
                 bunker.DrawBunker();
             }
 
-
             //Dessine le vaisseau
             spaceShipPlayer.PlayerSpaceShipDraw();
 
@@ -60,10 +59,8 @@ namespace P_Space_Invader
         /// </summary>
         public void PlayGame()
         {
-
             //Le jeu est en cours
             state = GameState.Play;
-
 
             do
             {
@@ -80,9 +77,8 @@ namespace P_Space_Invader
                     //Placement du message de pause
                     Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
 
+                    //Affiche le message de pause
                     Console.WriteLine("Pause");
-
-
                 }
 
                 if (Keyboard.IsKeyDown(Key.P) && state == GameState.Pause)
@@ -91,13 +87,12 @@ namespace P_Space_Invader
                     //Placement du message de pause
                     Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
 
+                    //Efface le message de pause
                     Console.WriteLine("     ");
 
                     //L'état du jeu redevient "En cours"
                     state = GameState.Play;
                 }
-
-
 
             } while (spaceShipPlayer.isAlive() == true);
 

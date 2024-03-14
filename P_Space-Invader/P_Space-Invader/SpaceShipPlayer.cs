@@ -190,6 +190,7 @@ namespace P_Space_Invader
                         Thread.Sleep(Convert.ToInt32(missile.speed));
                     }
 
+
                     //Place le curseur à la position du missile pour l'effacer
                     Console.SetCursorPosition(missile.PositionOnX, missile.PositionOnY);
 
