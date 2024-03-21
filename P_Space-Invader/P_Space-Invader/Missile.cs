@@ -40,7 +40,7 @@ namespace P_Space_Invader
         /// <summary>
         /// Vitesse du missile
         /// </summary>
-        public double speed = 100;
+        public double speed = 25;
 
 
         /// <summary>

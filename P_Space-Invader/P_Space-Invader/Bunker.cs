@@ -82,9 +82,9 @@ namespace P_Space_Invader
             //Étages du bunker
             const int NB_BUNKER_FLOOR = 3;
 
-            for (int i = 1; i < NB_BUNKER_FLOOR + 1; i++)
+            for (int i = 0; i < NB_BUNKER_FLOOR; i++)
             {
-                if (i == 1)
+                if (i == 0)
                 {
                     //Position initiale du bunker
                     Console.SetCursorPosition(_posX, _posY);
@@ -93,7 +93,7 @@ namespace P_Space_Invader
                     Console.WriteLine(bunkerTop);
 
                 }
-                else if (i == 2)
+                else if (i == 1)
                 {
                     //Décale de 1 l'apparition de l'étage suivant pour un effet pyramide
                     _posX--;
@@ -110,7 +110,7 @@ namespace P_Space_Invader
                     //Dessine le milieu des bunkers
                     Console.WriteLine(bunkerMiddle);
                 }
-                else if(i == 3)
+                else if(i == 2)
                 {
                     //Décale de 1 l'apparition de l'étage suivant pour un effet pyramide
                     _posX--;

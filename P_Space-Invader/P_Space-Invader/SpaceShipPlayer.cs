@@ -37,7 +37,7 @@ namespace P_Space_Invader
         /// <summary>
         /// Vitesse de déplacement du vaisseau
         /// </summary>
-        private double _spaceShipSpeed = 30;
+        private double _spaceShipSpeed = 100;
 
         /// <summary>
         /// Position initiale du vaisseau sur l'axe Y
@@ -52,7 +52,7 @@ namespace P_Space_Invader
         /// <summary>
         /// Enplacement maximum du vaisseau sur la droite de la fenêtre
         /// </summary>
-        private int maxPosRight = Console.WindowWidth - 6;
+        private int maxPosRight = Console.WindowWidth - 7;
 
         /// <summary>
         /// Enplacement maximum du vaisseau sur la gauche de la fenêtre
