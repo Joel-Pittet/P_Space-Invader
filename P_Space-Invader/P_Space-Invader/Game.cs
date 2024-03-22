@@ -25,6 +25,16 @@ namespace P_Space_Invader
         //Instancie un nouveau vaisseau
         SpaceShipPlayer spaceShipPlayer = new SpaceShipPlayer(posX: Console.WindowWidth / 2, nbLives: 3, spaceShipShape: "--|--");
 
+        //Instancie des nouveaux ennemis
+        static Enemy enemy1 = new Enemy(shape: "<<^^>>", positionOnX: 32, positionOnY: 5, lives: 4);
+        static Enemy enemy2 = new Enemy(shape: "YY==YY", positionOnX: 40, positionOnY: 5, lives: 3);
+        static Enemy enemy3 = new Enemy(shape: "<<^^>>", positionOnX: 48, positionOnY: 5, lives: 4);
+        static Enemy enemy4 = new Enemy(shape: "YY==YY", positionOnX: 56, positionOnY: 5, lives: 3);
+        static Enemy enemy5 = new Enemy(shape: "<<^^>>", positionOnX: 64, positionOnY: 5, lives: 4);
+
+        //Instancie un block d'ennemis
+        EnemyBlock firstEnemyBlock = new EnemyBlock(enemy1: enemy1, enemy2: enemy2, enemy3: enemy3, enemy4: enemy4, enemy5: enemy5, positionOnX: 32, positionOnY: 10);
+
         /// <summary>
         /// Initialise le jeu
         /// </summary>
@@ -52,6 +62,10 @@ namespace P_Space_Invader
             //Dessine le vaisseau
             spaceShipPlayer.PlayerSpaceShipDraw();
 
+            //Affiche le block d'ennemi
+            firstEnemyBlock.DrawEnemyBlock();
+
+
         }
 
         /// <summary>
@@ -67,7 +81,11 @@ namespace P_Space_Invader
                 //Le vaisseau peut bouger et tirer
                 spaceShipPlayer.Update();
 
+                //Le bloc d'ennemi se déplace
+                //firstEnemyBlock.Update();
 
+                
+                /*OPTION PAUSE
                 //Si la touche p est touchée et que le jeu est en cours
                 if (Keyboard.IsKeyDown(Key.P) && state == GameState.Play)
                 {
@@ -92,7 +110,7 @@ namespace P_Space_Invader
 
                     //L'état du jeu redevient "En cours"
                     state = GameState.Play;
-                }
+                }*/
 
             } while (spaceShipPlayer.isAlive() == true);
 

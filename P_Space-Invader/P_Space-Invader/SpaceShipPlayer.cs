@@ -170,6 +170,10 @@ namespace P_Space_Invader
 
                 do
                 {
+
+                    
+
+
                     //Si le missile vient d'etre tirer on efface pas la dernière position du missile
                     //pour éviter d'effacer le vaisseau
                     if (isFirstRow)
